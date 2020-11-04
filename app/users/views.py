@@ -5,6 +5,7 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from app.models import User, BlogPost
 from app.users.forms import RegistrationForm, LoginForm, UpdateUserForm
 from app.users.picture_handler import add_profile_pic
+from ..email import mail_message
 from . import users
 
 
@@ -20,6 +21,7 @@ def register():
 
         db.session.add(user)
         db.session.commit()
+        mail_message('welcom to my blogs', 'email/welcome_user', user.email,user = user)
         flash('Thanks for registering! Now you can login!')
         return redirect(url_for('users.login'))
     return render_template('register.html', form=form)
