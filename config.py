@@ -4,7 +4,7 @@ import os
 
 class Config:
     # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/rblog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/blog'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     QUOTE_API_BASE_URL ='http://quotes.stormconsultancy.co.uk/random.json'
     QUOTE_API_KEY = os.environ.get('QUOTE_API_KEY')
@@ -28,7 +28,7 @@ class ProdConfig(Config):
 
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/rblog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/blog'
     DEBUG = True
 
 config_options = {
